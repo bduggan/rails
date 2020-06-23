@@ -110,8 +110,7 @@ module ActiveRecord
         end
 
         def begin_isolated_db_transaction(isolation)
-          begin_db_transaction
-          execute "SET TRANSACTION ISOLATION LEVEL #{transaction_isolation_levels.fetch(isolation)}"
+          execute "START TRANSACTION ISOLATION LEVEL #{transaction_isolation_levels.fetch(isolation)}"
         end
 
         # Commits a transaction.
